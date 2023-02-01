@@ -1,12 +1,10 @@
-import Home from "./components/ProjectForm";
-
+import Admin from "@pages/Admin";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <Home />
-      <p>coucou</p>
+      <Admin />
     </div>
   );
 }

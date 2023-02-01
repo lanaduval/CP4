@@ -1,32 +1,107 @@
-import { useRef } from "react";
+import { useState } from "react";
+import { Switch } from "@mui/material";
 import instance from "../helpers/axios";
+import "../Style.css";
 
-export default function fileUpload() {
-  const inputRef = useRef(null);
-  // eslint-disable-next-line no-lone-blocks
-  {
-    /*  const [project, setProject] = useState("");
-const [img, setImg] = useState("");  */
-  }
+export default function ProjectFrom() {
+  const [status, setStatus] = useState("en cours");
+  const handleChangeStatus = (e) => {
+    setStatus(e.target.checked ? "terminé" : "en cours");
+  };
+  const [online, setOnline] = useState("hors-ligne");
+  const handleChangeOnline = (e) => {
+    setOnline(e.target.checked ? "en ligne" : "hors-ligne");
+  };
+  const [project, setProject] = useState([]);
+
+  const handleChangeProject = (e) => {
+    const { name, value } = e.target;
+    setProject({ ...project, [name]: value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const formData = new FormData();
-    formData.append("avatar", inputRef.current.files[0]);
-    console.warn(formData);
-    console.warn(inputRef.current.files[0].name);
-
-    instance.post("./admin-profil", formData);
-    // instance.post("./");
+    instance.post("./projects", project);
   };
-  // faire tous le form data ici recup le nom original du fichier pour l'enregistre dans img en DB
-  // recup les infos sur le project aussi.
-  // name du forme à mettre en BDD dans picture.img = inputRef.current.files[0].name
+
   return (
-    <form encType="multipart/form-data" onSubmit={handleSubmit}>
-      <input type="file" name="avatar" ref={inputRef} />
-      <button type="submit">Envoyer</button>
-    </form>
+    <div>
+      <h1> Enregistrer un nouveau projet </h1>
+      <form encType="multipart/form-data" onSubmit={handleSubmit}>
+        <label>
+          {" "}
+          Titre
+          <input
+            type="text"
+            name="title"
+            placeholder="Titre"
+            onChange={handleChangeProject}
+          />
+        </label>
+        <label>
+          {" "}
+          Description
+          <input
+            type="text"
+            name="description"
+            placeholder="Description"
+            onChange={handleChangeProject}
+          />
+        </label>
+        <label>
+          {" "}
+          Stack technique
+          <input
+            type="text"
+            name="techno"
+            placeholder="Stack Technique"
+            onChange={handleChangeProject}
+          />
+        </label>
+        <label>
+          {" "}
+          Date de début
+          <input
+            type="date"
+            name="start"
+            placeholder="date de début"
+            onChange={handleChangeProject}
+          />
+        </label>
+        <label>
+          {" "}
+          Date de fin
+          <input
+            type="date"
+            name="end"
+            placeholder="Date de fin"
+            onChange={handleChangeProject}
+          />
+        </label>
+        <label>
+          Statut
+          <Switch
+            name="status"
+            onClick={handleChangeProject}
+            onChange={handleChangeStatus}
+            checked={status === "terminé"}
+            value={status}
+          />
+          {status === "terminé" ? "Terminé" : "En Cours"}
+        </label>
+        <label>
+          Statut
+          <Switch
+            name="online"
+            onClick={handleChangeProject}
+            onChange={handleChangeOnline}
+            checked={online === "en ligne"}
+            value={online}
+          />
+          {online === "en ligne" ? "En ligne" : "Hors-ligne"}
+        </label>
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
   );
 }

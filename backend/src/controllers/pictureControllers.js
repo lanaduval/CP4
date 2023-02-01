@@ -1,9 +1,9 @@
 const models = require("../models");
 
 const postPicture = (req, res) => {
-  const picture = req.body;
+  const { img, legende, projects_id, admin_id } = req.body;
   models.picture
-    .insert(picture)
+    .insert(img, legende, projects_id, admin_id)
     .then(() => {
       res.status(201).json({ success: "Picture saved" });
     })

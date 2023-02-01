@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const AbstractManager = require("./AbstractManager");
 
 class PictureManager extends AbstractManager {
@@ -5,10 +6,10 @@ class PictureManager extends AbstractManager {
     super({ table: "picture" });
   }
 
-  insert(picture) {
+  insert(img, legende, projects_id, admin_id) {
     return this.connection.query(
       `insert into ${this.table} (img, legende, projects_id, admin_id) values (?, ?, ?, ?)`,
-      [picture.img, picture.legende, picture.projects_id, picture.admin_id]
+      [img, legende, projects_id, admin_id]
     );
   }
 
@@ -19,8 +20,8 @@ class PictureManager extends AbstractManager {
         picture.img,
         picture.legende,
         picture.projects_id,
-        picture.id,
         picture.admin_id,
+        picture.id,
       ]
     );
   }

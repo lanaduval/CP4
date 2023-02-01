@@ -63,7 +63,7 @@ router.post(
 );
 router.post(
   "/projects-picture",
-  photosDest.single("photo"),
+  photosDest.single("photos"),
   multerControllers.uploadPicture
 );
 
