@@ -1,4 +1,5 @@
 const express = require("express");
+const multer = require("multer");
 
 const router = express.Router();
 
@@ -48,5 +49,22 @@ router.get("/pictures", pictureControllers.getAllPicture);
 router.get("/pictures/:id", pictureControllers.getPictureByID);
 router.put("/pictures/:id", pictureControllers.putPicture);
 router.delete("/pictures/:id", pictureControllers.deletePicture);
+
+// uploads
+const multerControllers = require("./controllers/multerControllers");
+
+const avatarDest = multer({ dest: "uploads/avatar/" });
+const photosDest = multer({ dest: "uploads/photos/" });
+
+router.post(
+  "/admin-profil",
+  avatarDest.single("avatar"),
+  multerControllers.uploadAvatar
+);
+router.post(
+  "/projects-picture",
+  photosDest.single("photo"),
+  multerControllers.uploadPicture
+);
 
 module.exports = router;

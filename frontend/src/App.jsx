@@ -1,4 +1,4 @@
-import Home from "./pages/Home";
+import Home from "./components/ProjectForm";
 
 import "./App.css";
 
