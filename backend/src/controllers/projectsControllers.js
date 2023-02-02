@@ -1,9 +1,9 @@
 const models = require("../models");
 
 const postProjects = (req, res) => {
-  const projects = req.body;
+  const { projects, img } = req.body;
   models.projects
-    .insert(projects)
+    .insert(projects, img)
     .then(() => {
       res.status(201).json({ success: "Project saved" });
     })

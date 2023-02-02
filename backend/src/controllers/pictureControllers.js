@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const models = require("../models");
 
 const postPicture = (req, res) => {

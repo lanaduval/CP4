@@ -29,12 +29,12 @@ export default function PhotoForm() {
     <form encType="multipart/form-data" onSubmit={handleSubmitImg}>
       <label>
         {" "}
-        Image
+        Ajouter une image supplémentaire ?
         <input type="file" name="photos" ref={inputRef} />
       </label>
       <label>
         {" "}
-        Ajouter une légende ?
+        Ajouter une légende à cette image ?
         <input type="text" name="legende" onChange={handleChangeLegende} />
       </label>
       <button type="submit">Envoyer</button>

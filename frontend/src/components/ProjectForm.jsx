@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Switch } from "@mui/material";
 import instance from "../helpers/axios";
 import "../Style.css";
 
 export default function ProjectFrom() {
+  const inputRef = useRef(null);
   const [status, setStatus] = useState("en cours");
   const handleChangeStatus = (e) => {
     setStatus(e.target.checked ? "terminé" : "en cours");
@@ -12,16 +13,20 @@ export default function ProjectFrom() {
   const handleChangeOnline = (e) => {
     setOnline(e.target.checked ? "en ligne" : "hors-ligne");
   };
-  const [project, setProject] = useState([]);
+  const [projects, setProjects] = useState([]);
 
-  const handleChangeProject = (e) => {
+  const handleChangeProjects = (e) => {
     const { name, value } = e.target;
-    setProject({ ...project, [name]: value });
+    setProjects({ ...projects, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    instance.post("./projects", project);
+    const formData = new FormData();
+    const img = inputRef.current.files[0].name;
+    formData.append("photos", inputRef.current.files[0]);
+    instance.post("./projects", { projects, img });
+    instance.post("./projects-picture", formData);
   };
 
   return (
@@ -35,7 +40,7 @@ export default function ProjectFrom() {
             type="text"
             name="title"
             placeholder="Titre"
-            onChange={handleChangeProject}
+            onChange={handleChangeProjects}
           />
         </label>
         <label>
@@ -45,7 +50,7 @@ export default function ProjectFrom() {
             type="text"
             name="description"
             placeholder="Description"
-            onChange={handleChangeProject}
+            onChange={handleChangeProjects}
           />
         </label>
         <label>
@@ -55,7 +60,7 @@ export default function ProjectFrom() {
             type="text"
             name="techno"
             placeholder="Stack Technique"
-            onChange={handleChangeProject}
+            onChange={handleChangeProjects}
           />
         </label>
         <label>
@@ -65,7 +70,7 @@ export default function ProjectFrom() {
             type="date"
             name="start"
             placeholder="date de début"
-            onChange={handleChangeProject}
+            onChange={handleChangeProjects}
           />
         </label>
         <label>
@@ -75,14 +80,14 @@ export default function ProjectFrom() {
             type="date"
             name="end"
             placeholder="Date de fin"
-            onChange={handleChangeProject}
+            onChange={handleChangeProjects}
           />
         </label>
         <label>
           Statut
           <Switch
             name="status"
-            onClick={handleChangeProject}
+            onClick={handleChangeProjects}
             onChange={handleChangeStatus}
             checked={status === "terminé"}
             value={status}
@@ -93,12 +98,17 @@ export default function ProjectFrom() {
           Statut
           <Switch
             name="online"
-            onClick={handleChangeProject}
+            onClick={handleChangeProjects}
             onChange={handleChangeOnline}
             checked={online === "en ligne"}
             value={online}
           />
           {online === "en ligne" ? "En ligne" : "Hors-ligne"}
+        </label>
+        <label>
+          {" "}
+          Ajouter une image
+          <input type="file" name="photos" ref={inputRef} />
         </label>
         <button type="submit">Envoyer</button>
       </form>
