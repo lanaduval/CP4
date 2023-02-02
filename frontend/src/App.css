@@ -1,56 +1,106 @@
+* {
+  box-sizing: border-box;
+}
 body {
+  background: rgb(67, 139, 213);
+  background: radial-gradient(
+    circle,
+    rgba(67, 139, 213, 0.9598214285714286) 15%,
+    rgba(150, 202, 255, 0.9598214285714286) 23%,
+    rgb(106, 62, 140) 97%
+  );
+  font-family: "Oxygen";
+  scroll-behavior: smooth;
+}
+form {
+  display: inline-block;
+  background-color: rgba(43, 52, 61, 0.127);
+  padding: 2rem;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
+input,
+label,
+textarea {
+  display: inline-block;
+  background: none;
+  text-align: start;
+  cursor: text;
+  color: rgba(221, 224, 227, 0.634);
+  margin: 0.4em;
+  padding: 1px 2px;
+  border-width: 2px;
+  border-color: rgba(240, 248, 255, 0.127);
+  padding: 1px 2px;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  position: relative;
+  display: block;
+  font-family: var(--font-text);
+  outline: none;
+  padding: 0;
+  width: 100%;
+  padding: 1rem;
+  box-shadow: inset 0 0 0 1px var(--border-color-softer);
+  overflow: scroll;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
+textarea {
+  height: 5rem;
+}
+h1 {
+  font-family: "Raleway", sans-serif;
+  font-size: 1.5rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.projectCard {
+  margin-right: 2rem;
+  margin-left: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  border-radius: 0.7rem;
+  width: 25%;
+  -webkit-border-radius: 0.7rem;
+  -moz-border-radius: 0.7rem;
+  -ms-border-radius: 0.7rem;
+  -o-border-radius: 0.7rem;
+  backdrop-filter: blur(5000px);
+  background-image: radial-gradient(
+    circle,
+    rgba(67, 139, 213, 0.3) 15%,
+    rgba(150, 202, 255, 0.5) 23%,
+    rgb(106, 62, 140, 0.5) 97%
+  );
 }
-
-.App {
-  text-align: center;
+.project {
+  padding: 1rem;
+  opacity: 0.8;
+  display: flex;
+  width: 80%;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border-radius: 0.7rem;
+  background-color: rgba(240, 248, 255, 0.127);
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.projectContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-button {
-  font-size: calc(10px + 2vmin);
+img {
+  max-width: 100%;
 }

@@ -6,6 +6,9 @@ const router = require("./router");
 
 const app = express();
 
+app.use("/uploads/photos", express.static("uploads/photos"));
+app.use("/uploads/avatar", express.static("uploads/avatar"));
+
 // use some application-level middlewares
 app.use(
   cors({
