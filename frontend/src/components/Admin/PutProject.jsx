@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useRef, useEffect } from "react";
 import { Switch } from "@mui/material";
 import { useParams, useNavigate } from "react-router-dom";
@@ -54,10 +55,13 @@ export default function PutProjects() {
     setProjectModified(true);
   };
   const navigate = useNavigate();
-  console.log(initialProject);
   return (
     <div>
-      <button type="button" onClick={() => navigate("/admin")} className="backButton">
+      <button
+        type="button"
+        onClick={() => navigate("/admin")}
+        className="backButton"
+      >
         {" "}
         retour à l'admin{" "}
       </button>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { Switch } from "@mui/material";
 import { Link } from "react-router-dom";

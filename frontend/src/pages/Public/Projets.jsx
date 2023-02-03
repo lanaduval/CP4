@@ -1,4 +1,3 @@
-import Navbar from "@components/Layout/Navbar";
 import { useEffect, useState } from "react";
 import instance from "../../helpers/axios";
 
@@ -18,7 +17,6 @@ export default function Projets() {
 
   return (
     <div className="projectContainer">
-   
       <div className="project">
         {allMyProjects.map((myProjects) => (
           <div key={myProjects.index} className="projectCard">
@@ -35,7 +33,12 @@ export default function Projets() {
             <p>
               stack : {myProjects.techno} <br /> statut : {myProjects.status}{" "}
             </p>
-            <a className="link" target="_blank" rel="noreferrer" href="">
+            <a
+              className="link"
+              target="_blank"
+              rel="noreferrer"
+              href="www.lanaduval.com"
+            >
               {" "}
               à rajouter en bdd{" "}
             </a>
