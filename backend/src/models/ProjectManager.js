@@ -39,6 +39,13 @@ class ProjectManager extends AbstractManager {
     );
   }
 
+  getProjectsByID(id) {
+    return this.connection.query(
+      ` select title, description, techno, DATE_FORMAT(start, "%Y-%m-%d") start,DATE_FORMAT(end, "%Y-%m-%d") end, status, online, img  from  ${this.table} where id= ?`,
+      [id]
+    );
+  }
+
   getProjectsAndPicturesByProjectsID(id) {
     return this.connection.query(
       `select picture.id, projects.title, projects.description, projects.techno, projects.status, projects.start, projects.end, projects.online, projects.admin_id, picture.img, picture.legende, picture.projects_id

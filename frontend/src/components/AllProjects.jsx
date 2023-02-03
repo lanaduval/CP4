@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Switch } from "@mui/material";
+import { Link } from "react-router-dom";
 import instance from "../helpers/axios";
 
 // eslint-disable-next-line react/prop-types
@@ -29,6 +31,14 @@ export default function AllProjects({ setProjectPosted, projectPosted }) {
       setDeletedProject(true);
     }
   };
+  const [status, setStatus] = useState("en cours");
+  const handleChangeStatus = (e) => {
+    setStatus(e.target.checked ? "terminé" : "en cours");
+  };
+  const [online, setOnline] = useState("hors-ligne");
+  const handleChangeOnline = (e) => {
+    setOnline(e.target.checked ? "en ligne" : "hors-ligne");
+  };
 
   return (
     <div className="projectContainer">
@@ -45,7 +55,30 @@ export default function AllProjects({ setProjectPosted, projectPosted }) {
             />
             <p> {myProject.description}</p>
             <p> {myProject.techno}</p>
-            <button type="button"> modifier</button>
+            <p> {myProject.online}</p>
+            <p>{myProject.status}</p>
+            <Switch
+              color="primary"
+              name="status"
+              onChange={handleChangeStatus}
+              checked={myProject.status}
+              value={myProject.status}
+            />
+            {status === "terminé" ? "Terminé" : "En Cours"}
+
+            <Switch
+              color="primary"
+              label="Top"
+              labelPlacement="top"
+              name="online"
+              onChange={handleChangeOnline}
+              checked={myProject.online}
+              value={myProject.online}
+            />
+            {online === "en ligne" ? "En ligne" : "Hors-ligne"}
+            <Link to={`/projects/${myProject.id}`}>
+              <button type="button"> modifier</button>
+            </Link>
             <button
               type="button"
               onClick={() => handleDeleteProject(myProject.id)}

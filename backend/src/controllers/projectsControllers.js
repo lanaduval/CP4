@@ -26,7 +26,7 @@ const getAllProjects = (req, res) => {
 
 const getProjectsByID = (req, res) => {
   models.projects
-    .find(req.params.id)
+    .getProjectsByID(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
         res.sendStatus(404);
