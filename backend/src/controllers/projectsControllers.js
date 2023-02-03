@@ -59,6 +59,24 @@ const putProjects = (req, res) => {
       res.sendStatus(500);
     });
 };
+
+const changeProjectImg = (req, res) => {
+  const { id } = req.params;
+  const { img } = req.body;
+  models.projects
+    .changeProjectImg({ img, id })
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 const deleteProjects = (req, res) => {
   models.projects
     .delete(req.params.id)
@@ -104,6 +122,7 @@ module.exports = {
   getAllProjects,
   getProjectsByID,
   putProjects,
+  changeProjectImg,
   deleteProjects,
   getProjectsAndPicturesByProjectsID,
   getAllProjectsAndPictures,

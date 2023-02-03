@@ -32,6 +32,7 @@ router.post("/projects", projectsControllers.postProjects);
 router.get("/projects", projectsControllers.getAllProjects);
 router.get("/projects/:id", projectsControllers.getProjectsByID);
 router.put("/projects/:id", projectsControllers.putProjects);
+router.put("/projects-img/:id", projectsControllers.changeProjectImg);
 router.delete("/projects/:id", projectsControllers.deleteProjects);
 
 // PROJECTS + PICTURES

@@ -59,5 +59,12 @@ class ProjectManager extends AbstractManager {
       .query(`select picture.id, projects.title, projects.description, projects.techno, projects.status, projects.start, projects.end, projects.online, projects.admin_id, picture.img, picture.legende, picture.projects_id
     from picture inner join projects on projects_id = projects.id`);
   }
+
+  changeProjectImg({ img, id }) {
+    return this.connection.query(
+      `update ${this.table} set img = ? where id = ?`,
+      [img, id]
+    );
+  }
 }
 module.exports = ProjectManager;

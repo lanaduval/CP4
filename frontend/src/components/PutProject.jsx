@@ -8,6 +8,7 @@ export default function PutProjects({ projectPosted, setProjectPosted }) {
   const inputRef = useRef(null);
   const [initialProject, setInitialProject] = useState("");
   // fetch le projet en fonction de son id
+  const [projectModified, setProjectModified] = useState(false);
   const { id } = useParams();
   useEffect(() => {
     instance
@@ -15,11 +16,12 @@ export default function PutProjects({ projectPosted, setProjectPosted }) {
       .then((result) => {
         setInitialProject(result.data);
         setProjectPosted(false);
+        setProjectModified(false);
       })
       .catch((err) => {
         console.error(err);
       });
-  }, [projectPosted, id]);
+  }, [projectPosted, projectModified, id]);
 
   const [status, setStatus] = useState("terminé");
   const handleChangeStatus = (e) => {
@@ -36,22 +38,20 @@ export default function PutProjects({ projectPosted, setProjectPosted }) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    // eslint-disable-next-line no-lone-blocks
-    {
-      /*  const img = inputRef.current.files[0].name
-      ? inputRef.current.files[0].name
-      : initialProject.img;
-  formData.append("photos", inputRef.current.files[0]); */
-    }
     instance.put(`./projects/${id}`, initialProject);
     setProjectPosted(true);
-    if (formData) {
-      instance.post("./projects-picture", formData);
-      setProjectPosted(true);
-    } else {
-      console.warn("coucou");
-    }
+    setProjectModified(true);
+  };
+
+  const handleChangeImg = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("photos", inputRef.current.files[0]);
+    const img = inputRef.current.files[0].name;
+    instance.post("./projects-picture", formData);
+    instance.put(`./projects-img/${id}`, { img });
+    setProjectPosted(true);
+    setProjectModified(true);
   };
 
   return (
@@ -135,18 +135,23 @@ export default function PutProjects({ projectPosted, setProjectPosted }) {
           />
           {online === "en ligne" ? "Hors-ligne" : "En ligne"}
         </label>
-        <label>
-          {" "}
-          Changer l'image ?
-          <input type="file" name="photos" ref={inputRef} />
-        </label>
-        <button type="submit">Modifier</button>
+        <button type="submit">Modifier le projet</button>
         <img
           alt=" représentation actuelle du projet"
           src={`${import.meta.env.VITE_BACKEND_URL}/uploads/photos/${
             initialProject.img
           }`}
         />
+        <label>
+          {" "}
+          Changer l'image ?
+          <input type="file" name="photos" ref={inputRef} />
+        </label>
+        <button type="button" onClick={handleChangeImg}>
+          {" "}
+          Modifier l'image{" "}
+        </button>
+        <button type="button"> Ajouter d'autres images ?</button>
       </form>
     </div>
   );
