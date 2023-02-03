@@ -1,31 +1,37 @@
 * {
   box-sizing: border-box;
 }
+#root {
+  height: 100vh;
+}
 
 body {
-  background: rgb(67, 139, 213);
+  background: rgb(149, 184, 218);
   background: radial-gradient(
     circle,
-    rgba(67, 139, 213, 0.9598214285714286) 15%,
-    rgba(150, 202, 255, 0.9598214285714286) 23%,
-    rgb(106, 62, 140) 97%
+    #9ccbfaf5 15%,
+    #96cafff5 23%,
+    #6a3e8c 97%
   );
   font-family: "Oxygen";
   scroll-behavior: smooth;
   margin: 0;
+  backdrop-filter: blur(10px);
 }
 a {
   text-decoration: none;
-  color: aliceblue;
+  color: white;
 }
 li {
-  list-style-type:none;
+  list-style-type: none;
+  display: flex;
 }
+
 textarea {
   height: 5rem;
 }
 img {
-  max-width: 100%;
+  width: 90%;
 }
 h1 {
   font-family: "Raleway", sans-serif;
@@ -84,19 +90,44 @@ textarea {
   justify-content: center;
   align-items: center;
 }
+.scroll {
+  overflow-x: scroll;
+}
+.projectContainer {
+  display: flex;
+  width: max-content;
+}
+.project {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  width: 65%;
+}
 
-.projectCard {
-  margin-right: 2rem;
-  margin-left: 2rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  font-size: 1rem;
-  color: rgba(0, 0, 0, 0.8);
+.projectContainerAdmin {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+}
+.projectAdmin {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+.projectCard {
+  display: flex;
+  height: 100%;
+  width: fit-content;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.8);
   padding: 2rem;
   border-radius: 0.7rem;
-  width: 25%;
   -webkit-border-radius: 0.7rem;
   -moz-border-radius: 0.7rem;
   -ms-border-radius: 0.7rem;
@@ -109,46 +140,79 @@ textarea {
     rgb(106, 62, 140, 0.5) 97%
   );
 }
-.project {
-  padding: 1rem;
-  opacity: 0.8;
-  display: flex;
-  width: 80%;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  border-radius: 0.7rem;
-  background-color: rgba(240, 248, 255, 0.127);
-}
-.projectContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-}
 
 .navbar {
-  background-color: rgba(8, 8, 8, 0.878);
-  display:flex;
+  display: flex;
   justify-content: flex-start;
   line-height: 2rem;
   position: absolute;
   z-index: 1;
-  width: 20%;
-  height:100%;
+  width: 18%;
+  height: 85vh;
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 1rem;
   text-transform: uppercase;
   padding: 1rem;
- 
+  backdrop-filter: blur(35px);
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
 }
 
 .navContainer {
   display: flex;
   flex-direction: column;
-align-items: flex-end;
-background-color: rgba(8, 8, 8, 0.878);
-
-
-
+  align-items: flex-end;
 }
 
+ul#navLink {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  text-transform: uppercase;
+}
 
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
+.infoCard {
+  background-color: rgba(247, 247, 247, 0.289);
+  display: flex;
+  width: 40%;
+  height: 50%;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-bottom: 10rem;
+  transform-style: preserve-3d;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
+.infoCard h1 {
+  font-family: "Remboy";
+  font-size: 1.2rem;
+  color: rgb(77, 80, 120);
+}
+.infoCard p {
+  backdrop-filter: blur(5px);
+  border-radius: 2rem;
+}
+
+.info img {
+  opacity: 0.3;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+  align-self: center;
+  border-radius: 2rem;
+}

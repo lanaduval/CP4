@@ -17,7 +17,7 @@ export default function Projets() {
 
   return (
     <div className="projectContainer">
-      <div className="project">
+      <div className="projectAdmin">
         {allMyProjects.map((myProjects) => (
           <div key={myProjects.index} className="projectCard">
             <h1>{myProjects.title}</h1>

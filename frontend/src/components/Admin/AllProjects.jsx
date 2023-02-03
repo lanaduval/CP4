@@ -42,19 +42,28 @@ export default function AllProjects({ setProjectPosted, projectPosted }) {
   };
 
   return (
-    <div className="projectContainer">
-      <h1> Tous mes projets </h1>
-      <div className="project">
+    <div
+      className="projectContainerAdmin"
+      style={{ backgroundColor: "#D5DBE3B5" }}
+    >
+      <div className="projectAdmin">
+        <h1> Tous mes projets </h1>
         {allProjects.map((myProject) => (
-          <div key={myProject.id} className="projectCard">
-            <h1>{myProject.title}</h1>
+          <div
+            key={myProject.id}
+            className="projectCard"
+            style={{ background: "#D5DBE3FF" }}
+          >
+            <h1>Titre : {myProject.title}</h1>
             <img
               alt="aperçu du projet"
               src={`${import.meta.env.VITE_BACKEND_URL}/uploads/photos/${
                 myProject.img
               }`}
             />
+            <h2> Description :</h2>
             <p> {myProject.description}</p>
+            <h2> Stack :</h2>
             <p> {myProject.techno}</p>
             <Switch
               name="status"

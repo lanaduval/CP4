@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
-export default function Navbar() {
+export default function Navbar({ adminLink }) {
   return (
     <div className="navContainer">
       <div className="navbar">
         <ul>
+          {adminLink}
           <NavLink to="/">
             {" "}
             <li>Home</li>

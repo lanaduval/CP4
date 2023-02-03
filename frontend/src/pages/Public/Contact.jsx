@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Socials from "@components/Socials";
+import "./Anims.scss";
 
 export default function Contact() {
   const form = useRef();
