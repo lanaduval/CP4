@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { Switch } from "@mui/material";
-import instance from "../helpers/axios";
+import instance from "../../helpers/axios";
 
 // eslint-disable-next-line react/prop-types
 export default function PostProjects({ setProjectPosted }) {

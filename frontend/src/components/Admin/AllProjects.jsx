@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Switch } from "@mui/material";
 import { Link } from "react-router-dom";
-import instance from "../helpers/axios";
+import instance from "../../helpers/axios";
 
 // eslint-disable-next-line react/prop-types
 export default function AllProjects({ setProjectPosted, projectPosted }) {
@@ -31,13 +31,13 @@ export default function AllProjects({ setProjectPosted, projectPosted }) {
       setDeletedProject(true);
     }
   };
-  const [status, setStatus] = useState("en cours");
+  const [status, setStatus] = useState("terminé");
   const handleChangeStatus = (e) => {
-    setStatus(e.target.checked ? "terminé" : "en cours");
+    setStatus(e.target.checked ? "en cours" : "terminé");
   };
-  const [online, setOnline] = useState("hors-ligne");
+  const [online, setOnline] = useState("en ligne");
   const handleChangeOnline = (e) => {
-    setOnline(e.target.checked ? "en ligne" : "hors-ligne");
+    setOnline(e.target.checked ? "hors-ligne" : "en ligne");
   };
 
   return (
@@ -55,27 +55,21 @@ export default function AllProjects({ setProjectPosted, projectPosted }) {
             />
             <p> {myProject.description}</p>
             <p> {myProject.techno}</p>
-            <p> {myProject.online}</p>
-            <p>{myProject.status}</p>
             <Switch
-              color="primary"
               name="status"
               onChange={handleChangeStatus}
-              checked={myProject.status}
+              checked={myProject.status === "terminé"}
               value={myProject.status}
             />
-            {status === "terminé" ? "Terminé" : "En Cours"}
+            {myProject.status}
 
             <Switch
-              color="primary"
-              label="Top"
-              labelPlacement="top"
               name="online"
               onChange={handleChangeOnline}
-              checked={myProject.online}
+              checked={myProject.online === "en ligne"}
               value={myProject.online}
             />
-            {online === "en ligne" ? "En ligne" : "Hors-ligne"}
+            {myProject.online}
             <Link to={`/projects/${myProject.id}`}>
               <button type="button"> modifier</button>
             </Link>

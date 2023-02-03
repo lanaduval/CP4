@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import { Switch } from "@mui/material";
-import { useParams } from "react-router-dom";
-import instance from "../helpers/axios";
+import { useParams, useNavigate } from "react-router-dom";
+import AllProjects from "./AllProjects";
+import instance from "../../helpers/axios";
 
 // eslint-disable-next-line react/prop-types
 export default function PutProjects() {
@@ -22,11 +23,12 @@ export default function PutProjects() {
       });
   }, [projectModified, id]);
 
-  const [status, setStatus] = useState("terminé");
+  const [status, setStatus] = useState(initialProject.status);
   const handleChangeStatus = (e) => {
     setStatus(e.target.checked ? "en cours" : "terminé");
   };
-  const [online, setOnline] = useState("hors-ligne");
+
+  const [online, setOnline] = useState(initialProject.online);
   const handleChangeOnline = (e) => {
     setOnline(e.target.checked ? "hors-ligne" : "en ligne");
   };
@@ -51,9 +53,14 @@ export default function PutProjects() {
     instance.put(`./projects-img/${id}`, { img });
     setProjectModified(true);
   };
-
+  const navigate = useNavigate();
+  console.log(initialProject);
   return (
     <div>
+      <button type="button" onClick={() => navigate("/admin")} className="backButton">
+        {" "}
+        retour à l'admin{" "}
+      </button>
       <h1> Modifier le projet </h1>
       <form encType="multipart/form-data" onSubmit={handleSubmit}>
         <label>
@@ -111,28 +118,20 @@ export default function PutProjects() {
             value={initialProject.end}
           />
         </label>
-        <label>
-          Statut
-          <Switch
-            name="status"
-            onClick={handleChangeProjects}
-            onChange={handleChangeStatus}
-            checked={status === "en cours"}
-            value={status}
-          />
-          {status === "terminé" ? "En cours" : "Terminé"}
-        </label>
-        <label>
-          Publié
-          <Switch
-            name="online"
-            onClick={handleChangeProjects}
-            onChange={handleChangeOnline}
-            checked={online === "hors-ligne"}
-            value={online}
-          />
-          {online === "en ligne" ? "Hors-ligne" : "En ligne"}
-        </label>
+        <Switch
+          name="status"
+          onChange={handleChangeStatus}
+          checked={initialProject.status === "terminé"}
+          value={initialProject.status}
+        />
+        {initialProject.status}
+        <Switch
+          name="online"
+          onChange={handleChangeOnline}
+          checked={initialProject.online === "en ligne"}
+          value={initialProject.online}
+        />
+        {initialProject.online}
         <button type="submit">Modifier le projet</button>
         <img
           alt=" représentation actuelle du projet"
@@ -151,6 +150,7 @@ export default function PutProjects() {
         </button>
         <button type="button"> Ajouter d'autres images ?</button>
       </form>
+      <AllProjects />
     </div>
   );
 }

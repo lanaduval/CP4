@@ -1,6 +1,6 @@
 import { useState } from "react";
-import PostProjects from "@components/PostProject";
-import AllProjects from "@components/AllProjects";
+import PostProjects from "@components/Admin/PostProject";
+import AllProjects from "@components/Admin/AllProjects";
 
 export default function Admin() {
   const [projectPosted, setProjectPosted] = useState(false);

@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import { useRef, useState } from "react";
-import instance from "../helpers/axios";
+import instance from "../../helpers/axios";
 
 export default function PhotoForm() {
   const inputRef = useRef(null);

@@ -2,7 +2,7 @@ import { useState } from "react";
 import jwtDecode from "jwt-decode";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import instance from "../helpers/axios";
+import instance from "../../helpers/axios";
 
 export default function Admin() {
   const [admin, setAdmin] = useState();
