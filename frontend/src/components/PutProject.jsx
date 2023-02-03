@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import instance from "../helpers/axios";
 
 // eslint-disable-next-line react/prop-types
-export default function PutProjects({ projectPosted, setProjectPosted }) {
+export default function PutProjects() {
   const inputRef = useRef(null);
   const [initialProject, setInitialProject] = useState("");
   // fetch le projet en fonction de son id
@@ -15,13 +15,12 @@ export default function PutProjects({ projectPosted, setProjectPosted }) {
       .get(`/projects/${id}`)
       .then((result) => {
         setInitialProject(result.data);
-        setProjectPosted(false);
         setProjectModified(false);
       })
       .catch((err) => {
         console.error(err);
       });
-  }, [projectPosted, projectModified, id]);
+  }, [projectModified, id]);
 
   const [status, setStatus] = useState("terminé");
   const handleChangeStatus = (e) => {
@@ -39,7 +38,6 @@ export default function PutProjects({ projectPosted, setProjectPosted }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     instance.put(`./projects/${id}`, initialProject);
-    setProjectPosted(true);
     setProjectModified(true);
   };
 
@@ -49,8 +47,8 @@ export default function PutProjects({ projectPosted, setProjectPosted }) {
     formData.append("photos", inputRef.current.files[0]);
     const img = inputRef.current.files[0].name;
     instance.post("./projects-picture", formData);
+    setProjectModified(true);
     instance.put(`./projects-img/${id}`, { img });
-    setProjectPosted(true);
     setProjectModified(true);
   };
 
