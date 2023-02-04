@@ -140,6 +140,12 @@ textarea {
     rgb(106, 62, 140, 0.5) 97%
   );
 }
+span{
+  font-family: 'Remboy';
+  font-weight: bold;
+  white-space: nowrap;
+  color:rgb(77, 80, 120);
+  }
 
 .navbar {
   display: flex;
