@@ -26,7 +26,7 @@ export default function Projets() {
       <div className="projectContainer">
         <div className="project">
           {allMyProjects.map((myProjects) => (
-            <div key={myProjects.index} className="projectCard">
+            <div key={myProjects.id} className="projectCard">
               <h1>{myProjects.title}</h1>
               <img
                 alt="aperçu du projet"
@@ -36,10 +36,15 @@ export default function Projets() {
               />
               <h2> Description : </h2>
               <p>{myProjects.description} </p>
-
-              <p>
-                stack : {myProjects.techno} <br /> statut : {myProjects.status}{" "}
-              </p>
+              <p>{myProjects.techno}</p>
+              <Switch
+                name="status"
+                color="warning"
+                onChange={handleChangeStatus}
+                checked={myProjects.status === "terminé"}
+                value={myProjects.status}
+              />
+              {myProjects.status}
               <a
                 className="link"
                 target="_blank"
@@ -49,14 +54,6 @@ export default function Projets() {
                 {" "}
                 lien{" "}
               </a>
-              <Switch
-                name="status"
-                color="warning"
-                onChange={handleChangeStatus}
-                checked={myProjects.status === "terminé"}
-                value={myProjects.status}
-              />
-              {myProjects.status}
             </div>
           ))}
         </div>

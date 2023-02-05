@@ -115,16 +115,18 @@ export default function PostProjects({ setProjectPosted }) {
           <input
             type="text"
             name="url"
-            placeholder="Description"
+            placeholder="url"
             onChange={handleChangeProjects}
           />
-          </label>
+        </label>
         <label>
           {" "}
           Ajouter une image
           <input type="file" name="photos" ref={inputRef} />
         </label>
-        <button type="submit">Envoyer</button>
+        <button className="standard" style={{ width: "100%" }} type="submit">
+          Ajouter
+        </button>
       </form>
     </div>
   );

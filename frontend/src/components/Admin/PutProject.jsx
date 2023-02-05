@@ -1,6 +1,4 @@
-/* eslint-disable no-unused-vars */
 import { useState, useRef, useEffect } from "react";
-import { Switch } from "@mui/material";
 import { useParams, useNavigate } from "react-router-dom";
 import AllProjects from "./AllProjects";
 import instance from "../../helpers/axios";
@@ -72,7 +70,7 @@ export default function PutProjects({ setProjectModified, projectModified }) {
         className="standard"
       >
         {" "}
-        retour à l'admin{" "}
+        Accueil Admin{" "}
       </button>
       <form encType="multipart/form-data" onSubmit={handleSubmit}>
         <label>
@@ -157,6 +155,7 @@ export default function PutProjects({ setProjectModified, projectModified }) {
         </button>
         <div className="putImg">
           <img
+            style={{ maxWidth: "100%" }}
             alt=" représentation actuelle du projet"
             src={`${import.meta.env.VITE_BACKEND_URL}/uploads/photos/${
               initialProject.img
@@ -175,6 +174,7 @@ export default function PutProjects({ setProjectModified, projectModified }) {
           Modifier l'image{" "}
         </button>
       </form>
+      <AllProjects />
     </div>
   );
 }
