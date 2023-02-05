@@ -111,6 +111,16 @@ export default function PostProjects({ setProjectPosted }) {
         </label>
         <label>
           {" "}
+          Site
+          <input
+            type="text"
+            name="url"
+            placeholder="Description"
+            onChange={handleChangeProjects}
+          />
+          </label>
+        <label>
+          {" "}
           Ajouter une image
           <input type="file" name="photos" ref={inputRef} />
         </label>

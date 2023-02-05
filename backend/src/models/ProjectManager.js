@@ -7,7 +7,7 @@ class ProjectManager extends AbstractManager {
 
   insert(projects, img) {
     return this.connection.query(
-      `insert into ${this.table} (title, description, techno, status, start, end, online, admin_id, img) values (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (title, description, techno, status, start, end, online, admin_id, url, img) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         projects.title,
         projects.description,
@@ -17,6 +17,7 @@ class ProjectManager extends AbstractManager {
         projects.end,
         projects.online,
         projects.admin_id,
+        projects.url,
         img,
       ]
     );

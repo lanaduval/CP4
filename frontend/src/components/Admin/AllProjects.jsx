@@ -85,6 +85,16 @@ export default function AllProjects() {
             <p> {myProject.description}</p>
             <h2> Stack :</h2>
             <p> {myProject.techno}</p>
+            <a
+              style={{ color: "black" }}
+              className="link"
+              target="_blank"
+              rel="noreferrer"
+              href={myProject.url}
+            >
+              {" "}
+              Site{" "}
+            </a>
             <Switch
               name="status"
               onChange={handleChangeStatus}

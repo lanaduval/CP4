@@ -22,6 +22,7 @@ CREATE TABLE projects(
   online VARCHAR(255) DEFAULT NULL,
   img VARCHAR(255) DEFAULT NULL,
   admin_id INT DEFAULT NULL,
+  url VARCHAR(255) DEFAULT NULL,
   CONSTRAINT fk_project_admin FOREIGN KEY (admin_id) REFERENCES admin(id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb3;
 

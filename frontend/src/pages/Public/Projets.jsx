@@ -44,10 +44,10 @@ export default function Projets() {
                 className="link"
                 target="_blank"
                 rel="noreferrer"
-                href="www.lanaduval.com"
+                href={myProjects.url}
               >
                 {" "}
-                à rajouter en bdd{" "}
+                lien{" "}
               </a>
               <Switch
                 name="status"
