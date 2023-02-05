@@ -1,0 +1,548 @@
+@font-face {
+  font-family: "Remboy";
+  src: url(assets/fonts/RemboyRegular.ttf);
+}
+* {
+  box-sizing: border-box;
+}
+#root {
+  height: 100vh;
+}
+
+body {
+  background: rgb(149, 184, 218);
+  background: radial-gradient(
+    circle,
+    #9ccbfaf5 15%,
+    #96cafff5 23%,
+    #6a3e8c 97%
+  );
+  font-family: "Mukta";
+  scroll-behavior: smooth;
+  margin: 0;
+  backdrop-filter: blur(10px);
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+li {
+  list-style-type: none;
+  display: flex;
+}
+h1.instruction {
+  font-family: "Oxygen";
+  text-transform: uppercase;
+  font-size: 1rem;
+  color: rgb(167, 225, 197);
+}
+h1.instructionAdmin {
+  display: flex;
+  font-family: "oxygen";
+  text-transform: uppercase;
+  font-size: 1rem;
+  background-color: rgb(167, 225, 197);
+  color: #6a3e8c;
+  padding: 0.5rem;
+  height: 3rem;
+  width: 90%;
+  align-self: center;
+  justify-content: center;
+  margin: 1rem;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+
+textarea {
+  height: 5rem;
+}
+button {
+  background: none;
+  border: none;
+}
+
+button.standard {
+  font-family: "Mukta";
+  font-size: 1rem;
+  background-color: rgb(167, 225, 197);
+  color: #6a3e8c;
+  padding: 0.5rem;
+  height: 3rem;
+  align-self: flex-start;
+  margin: 1rem;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+button.post {
+  width: 90%;
+  align-self: center;
+  font-family: "Mukta";
+  font-size: 1rem;
+  background-color: rgb(167, 225, 197);
+  color: #6a3e8c;
+  padding: 0.5rem;
+  height: 3rem;
+  align-self: flex-start;
+  margin: 1rem;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+
+button.modifier {
+  font-family: "Mukta";
+  font-size: 1rem;
+  background-color: #3e548c;
+  color: rgb(167, 225, 197);
+  padding: 0.5rem;
+  height: 3rem;
+  width: 90%;
+  align-self: center;
+  margin: 1rem;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+button.supprimer {
+  font-family: "Mukta";
+  font-size: 1rem;
+  width: 90%;
+  align-self: center;
+  background-color: #b1443e;
+  color: rgb(167, 225, 197);
+  padding: 0.5rem;
+  height: 3rem;
+  margin: 1rem;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+
+//-----------------------------------------------MOBILE QUERY
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-family: "Remboy";
+    font-size: 2rem;
+  }
+  h2 {
+    font-family: "Remboy";
+    font-size: 1.5rem;
+  }
+  //NAVBAR
+
+  .link {
+    text-decoration: none;
+    color: inherit;
+  }
+  #deskNav {
+    display: none;
+  }
+}
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  line-height: 2rem;
+  position: absolute;
+  z-index: 1;
+  width: 40%;
+  height: 85vh;
+  background-color: #6c558fb8;
+  border-radius: 1rem;
+  text-transform: uppercase;
+  padding: 1rem;
+  backdrop-filter: blur(35px);
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
+
+.navContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+// ----------HOME
+
+// HOME
+.welcome {
+  padding: 0;
+  z-index: 1;
+  position: absolute;
+  position: absolute;
+  top: 32%;
+  left: 30%;
+  backdrop-filter: blur(1.5px);
+  font-size: 2rem;
+  text-align: left;
+  font-family: "Remboy";
+}
+.effetNeon {
+  font-size: 1.8rem;
+  margin-left: -5rem;
+  color: #fff;
+  opacity: 0.6;
+  text-shadow: 0 0 7px rgb(236, 230, 250), 0 0 10px rgb(181, 170, 201),
+    0 0 42px rgb(234, 181, 208), 0 0 77px rgb(230, 18, 124),
+    0 0 100px rgb(155, 79, 117);
+}
+.sceneBas {
+  height: 80vh;
+  opacity: 0.7;
+}
+.sceneHaut {
+  height: 30%;
+  opacity: 0.7;
+}
+.nasaAPOD {
+  position: absolute;
+  opacity: 0.6;
+  z-index: -1;
+  overflow: hidden;
+  top: 20%;
+  width: 50%;
+  height: 50%;
+  clip-path: ellipse(40% 28%);
+  left: 10%;
+  top: 19%;
+}
+.nasaText {
+  position: absolute;
+  opacity: 0.7;
+  z-index: 1;
+  top: 40%;
+  width: 50%;
+  height: 50%;
+  left: 10%;
+  top: 54%;
+  font-size: 0.7rem;
+}
+
+//-----------PROJETS
+// PROJECTS
+.scroll {
+  overflow-x: scroll;
+}
+.projectContainer {
+  display: flex;
+  width: auto;
+}
+.project {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  width: 100%;
+}
+.projectCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  height: 100%;
+  border-radius: 0.7rem;
+  font-size: 1rem;
+  margin: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  border-radius: 0.7rem;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.8);
+  padding: 2rem;
+  backdrop-filter: blur(5000px);
+  background-image: radial-gradient(
+    circle,
+    rgba(67, 139, 213, 0.3) 15%,
+    rgba(150, 202, 255, 0.5) 23%,
+    rgb(106, 62, 140, 0.5) 97%
+  );
+}
+
+.projectCard img {
+  width: 100%;
+}
+
+//--- ADMIN PROJECTS
+.projectContainerAdmin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #6a3e8c;
+}
+.projectCardAdmin img {
+  width: 90%;
+}
+.projectAdmin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  width: 100%;
+}
+.projectCardAdmin {
+  width: 100%;
+  margin-right: 2rem;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  margin: 1rem;
+  margin-left: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-right: 2rem;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  border-radius: 0.7rem;
+  -webkit-border-radius: 0.7rem;
+  -moz-border-radius: 0.7rem;
+  -ms-border-radius: 0.7rem;
+}
+
+.putProject {
+  background-color: #6a3e8c;
+  padding: 2rem;
+}
+.putProject h1 {
+  display: flex;
+  justify-content: center;
+}
+.putProject form {
+  background-color: #cec8d3;
+}
+.putImg {
+  display: flex;
+}
+.projectCard h1 {
+  font-family: "Remboy";
+  font-size: 1.5rem;
+}
+.projectCard h2 {
+  font-family: "Remboy";
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+.projectCard a {
+  color: #fff;
+  margin-top: 0.8rem;
+  align-self: center;
+  font-weight: bold;
+  opacity: 0.8;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+//------A PROPOS
+
+.info {
+  display: flex;
+  margin: 2rem;
+  justify-content: center;
+  position: relative;
+  z-index: -1;
+  height: 80vh;
+}
+
+.infoCard {
+  position: absolute;
+  z-index: 1;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(247, 247, 247, 0.289);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 2rem;
+  padding: 2rem;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+.infoCard h1 {
+  font-family: "Remboy";
+  font-size: 1.2rem;
+  color: rgb(77, 80, 120);
+}
+.infoCard p {
+  backdrop-filter: blur(5px);
+  border-radius: 2rem;
+}
+
+.info img {
+  opacity: 0.3;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -2;
+  align-self: center;
+  border-radius: 2rem;
+}
+//------CONTACT
+
+form {
+  margin: auto;
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+  background-color: rgba(43, 52, 61, 0.127);
+  padding: 2rem;
+  backdrop-filter: blur(70px);
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
+input,
+label,
+textarea {
+  text-align: start;
+  cursor: text;
+  color: rgba(73, 76, 79, 0.697);
+  margin: 0.4em;
+  padding: 1px 2px;
+  border-width: 2px;
+  border-color: rgba(209, 206, 217, 0.188);
+  padding: 1px 2px;
+  margin: 0;
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  position: relative;
+  font-family: var(--font-text);
+  outline: none;
+  padding: 0;
+  width: 100%;
+  padding: 1rem;
+  box-shadow: inset 0 0 0 1px var(--border-color-softer);
+  overflow: scroll;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
+
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+}
+.contactForm h1 {
+}
+
+//------------------- DESKTOP---------------------------------
+
+@media only screen and (min-width: 600px) {
+  button.post {
+    width: 25%;
+  }
+  .navbar {
+    width: 18%;
+    height: 85vh;
+  }
+
+  ul#navLink {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    text-transform: uppercase;
+  }
+  #deskNav {
+    display: flex;
+  }
+  #deskNav li {
+    margin: 1rem;
+  }
+
+  .navContainer button {
+    margin-top: -3rem;
+    margin-bottom: 1rem;
+  }
+
+  //HOMEPAGE
+
+  .welcome {
+    top: 20%;
+    left: 27%;
+  }
+  .effetNeon {
+    font-size: 3rem;
+  }
+  .sceneBas {
+    height: 80vh;
+    position: relative;
+  }
+  .sceneHaut {
+    height: 40%;
+    position: relative;
+  }
+  .nasaAPOD {
+    clip-path: ellipse(10% 35%);
+    left: 10%;
+    top: 10%;
+  }
+
+  .sceneBas {
+    height: 80vh;
+    position: relative;
+  }
+  .sceneHaut {
+    height: 40%;
+    position: relative;
+  }
+
+  //-------------PROJETS
+  .scroll {
+    overflow-x: scroll;
+  }
+  .projectContainer {
+    display: flex;
+    width: max-content;
+  }
+  .project {
+    display: flex;
+    flex-direction: row;
+  }
+  .projectCard {
+    width: 8%;
+  }
+  .projectAdmin {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .projectCardAdmin {
+    width: 25%;
+  }
+  .info {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+  }
+  .infoCard {
+    width: 40%;
+    height: 50%;
+    margin-bottom: 15rem;
+  }
+
+  form {
+    width: 50%;
+  }
+}

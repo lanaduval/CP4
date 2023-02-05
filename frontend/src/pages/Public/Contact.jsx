@@ -2,8 +2,7 @@ import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Socials from "@components/Socials";
-import "./Anims.scss";
+import Socials from "@components/Public/Socials";
 
 export default function Contact() {
   const form = useRef();
@@ -50,7 +49,7 @@ export default function Contact() {
   return (
     <div>
       <div className="contactForm">
-        <h1>
+        <h1 className="instruction" style={{ color: "#3e548c" }}>
           Pour collaborer, <br /> envoyez-moi un message ici :
         </h1>
 
@@ -84,7 +83,15 @@ export default function Contact() {
               onChange={handleMessageChange}
             />
           </label>
-          <input id="sendButton" type="submit" value="Send" />
+          <button
+            style={{ width: "60%", alignSelf: "center" }}
+            className="standard"
+            type="submit"
+            value="Send"
+          >
+            {" "}
+            Envoyer
+          </button>
         </form>
       </div>
       <Socials />

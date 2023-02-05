@@ -6,32 +6,40 @@ import AllProjects from "./AllProjects";
 import instance from "../../helpers/axios";
 
 // eslint-disable-next-line react/prop-types
-export default function PutProjects() {
+export default function PutProjects({ setProjectModified, projectModified }) {
   const inputRef = useRef(null);
   const [initialProject, setInitialProject] = useState("");
   // fetch le projet en fonction de son id
-  const [projectModified, setProjectModified] = useState(false);
+
   const { id } = useParams();
   useEffect(() => {
     instance
       .get(`/projects/${id}`)
       .then((result) => {
         setInitialProject(result.data);
-        setProjectModified(false);
+        setProjectModified(true);
       })
       .catch((err) => {
         console.error(err);
       });
-  }, [projectModified, id]);
+  }, [id, projectModified]);
 
+  const [isCheckedStatus, setIsCheckedStatus] = useState(
+    initialProject.status === "terminé"
+  );
   const [status, setStatus] = useState(initialProject.status);
   const handleChangeStatus = (e) => {
     setStatus(e.target.checked ? "en cours" : "terminé");
+    setIsCheckedStatus(!isCheckedStatus);
   };
 
-  const [online, setOnline] = useState(initialProject.online);
+  const [isCheckedOnline, setIsCheckedOnline] = useState(
+    initialProject.online === "online"
+  );
+  const [online, setOnline] = useState("hors-ligne");
   const handleChangeOnline = (e) => {
     setOnline(e.target.checked ? "hors-ligne" : "en ligne");
+    setIsCheckedOnline(!isCheckedOnline);
   };
 
   const handleChangeProjects = (e) => {
@@ -56,16 +64,16 @@ export default function PutProjects() {
   };
   const navigate = useNavigate();
   return (
-    <div>
+    <div className="putProject">
+      <h1 className="instruction"> Modifier le projet </h1>
       <button
         type="button"
         onClick={() => navigate("/admin")}
-        className="backButton"
+        className="standard"
       >
         {" "}
         retour à l'admin{" "}
       </button>
-      <h1> Modifier le projet </h1>
       <form encType="multipart/form-data" onSubmit={handleSubmit}>
         <label>
           {" "}
@@ -122,39 +130,51 @@ export default function PutProjects() {
             value={initialProject.end}
           />
         </label>
-        <Switch
-          name="status"
-          onChange={handleChangeStatus}
-          checked={initialProject.status === "terminé"}
-          value={initialProject.status}
-        />
-        {initialProject.status}
-        <Switch
-          name="online"
-          onChange={handleChangeOnline}
-          checked={initialProject.online === "en ligne"}
-          value={initialProject.online}
-        />
-        {initialProject.online}
-        <button type="submit">Modifier le projet</button>
-        <img
-          alt=" représentation actuelle du projet"
-          src={`${import.meta.env.VITE_BACKEND_URL}/uploads/photos/${
-            initialProject.img
-          }`}
-        />
+        <label>
+          <input
+            type="checkbox"
+            name="status"
+            checked={isCheckedStatus}
+            onChange={handleChangeStatus}
+            onClick={handleChangeProjects}
+            value={status}
+          />
+          Statut ? {isCheckedStatus ? "terminé" : "en cours"}
+        </label>
+        <label>
+          <input
+            type="checkbox"
+            name="online"
+            checked={isCheckedOnline}
+            onClick={handleChangeProjects}
+            onChange={handleChangeOnline}
+            value={online}
+          />
+          Publié ? {isCheckedOnline ? " En ligne" : "Hors-ligne"}
+        </label>
+        <button className="modifier" type="submit">
+          Modifier le projet
+        </button>
+        <div className="putImg">
+          <img
+            alt=" représentation actuelle du projet"
+            src={`${import.meta.env.VITE_BACKEND_URL}/uploads/photos/${
+              initialProject.img
+            }`}
+          />
+        </div>
         <label>
           {" "}
-          Changer l'image ?
+          <h1 style={{ color: "#3e548c" }} className="instruction">
+            Changer l'image ?
+          </h1>
           <input type="file" name="photos" ref={inputRef} />
         </label>
-        <button type="button" onClick={handleChangeImg}>
+        <button className="modifier" type="button" onClick={handleChangeImg}>
           {" "}
           Modifier l'image{" "}
         </button>
-        <button type="button"> Ajouter d'autres images ?</button>
       </form>
-      <AllProjects />
     </div>
   );
 }

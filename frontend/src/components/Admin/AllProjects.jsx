@@ -2,26 +2,39 @@
 import { useEffect, useState } from "react";
 import { Switch } from "@mui/material";
 import { Link } from "react-router-dom";
+import PostProjects from "@components/Admin/PostProject";
 import instance from "../../helpers/axios";
 
 // eslint-disable-next-line react/prop-types
-export default function AllProjects({ setProjectPosted, projectPosted }) {
+export default function AllProjects() {
   const [deletedProject, setDeletedProject] = useState(false);
-
+  const [projectPosted, setProjectPosted] = useState(false);
+  const [projectModified, setProjectModified] = useState(false);
   const [allProjects, setAllProjects] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [postButton, setPostButton] = useState(false);
+  const handleModal = () => {
+    setShowModal(!showModal);
+    setPostButton(!postButton);
+  };
 
-  useEffect(() => {
-    instance
-      .get("/projects")
-      .then((result) => {
-        setAllProjects([...result.data].reverse());
-        setDeletedProject(false);
-        setProjectPosted(false);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, [deletedProject, projectPosted]);
+  useEffect(
+    () => {
+      instance
+        .get("/projects")
+        .then((result) => {
+          setAllProjects([...result.data].reverse());
+          setDeletedProject(false);
+          setProjectPosted(false);
+          setProjectModified(false);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    },
+    [deletedProject, projectPosted],
+    projectModified
+  );
 
   const handleDeleteProject = (projectId) => {
     // eslint-disable-next-line no-alert, no-restricted-globals
@@ -42,16 +55,23 @@ export default function AllProjects({ setProjectPosted, projectPosted }) {
   };
 
   return (
-    <div
-      className="projectContainerAdmin"
-      style={{ backgroundColor: "#D5DBE3B5" }}
-    >
+    <div className="projectContainerAdmin">
       <div className="projectAdmin">
-        <h1> Tous mes projets </h1>
+        <h1 className="instructionAdmin"> Administration de mes projets :</h1>
+        <button type="button" className="post" onClick={handleModal}>
+          {" "}
+          {postButton ? "Go Back" : "Poster un Projet"}{" "}
+        </button>
+        {showModal && (
+          <PostProjects
+            projectPosted={projectPosted}
+            setProjectPosted={setProjectPosted}
+          />
+        )}
         {allProjects.map((myProject) => (
           <div
             key={myProject.id}
-            className="projectCard"
+            className="projectCardAdmin"
             style={{ background: "#D5DBE3FF" }}
           >
             <h1>Titre : {myProject.title}</h1>
@@ -81,10 +101,14 @@ export default function AllProjects({ setProjectPosted, projectPosted }) {
             />
             {myProject.online}
             <Link to={`/projects/${myProject.id}`}>
-              <button type="button"> modifier</button>
+              <button className="modifier" type="button">
+                {" "}
+                modifier
+              </button>
             </Link>
             <button
               type="button"
+              className="supprimer"
               onClick={() => handleDeleteProject(myProject.id)}
             >
               {" "}

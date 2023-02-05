@@ -1,17 +1,21 @@
 import { useState, useRef } from "react";
-import { Switch } from "@mui/material";
 import instance from "../../helpers/axios";
 
 // eslint-disable-next-line react/prop-types
 export default function PostProjects({ setProjectPosted }) {
   const inputRef = useRef(null);
+
+  const [isChecked, setIsChecked] = useState(false);
   const [status, setStatus] = useState("terminé");
   const handleChangeStatus = (e) => {
     setStatus(e.target.checked ? "en cours" : "terminé");
+    setIsChecked(!isChecked);
   };
+  const [isCheckedOnline, setIsCheckedOnline] = useState(false);
   const [online, setOnline] = useState("hors-ligne");
   const handleChangeOnline = (e) => {
     setOnline(e.target.checked ? "hors-ligne" : "en ligne");
+    setIsCheckedOnline(!isCheckedOnline);
   };
   const [projects, setProjects] = useState([]);
 
@@ -28,9 +32,10 @@ export default function PostProjects({ setProjectPosted }) {
     instance.post("./projects-picture", formData);
     setProjectPosted(true);
   };
+
   return (
     <div>
-      <h1> Enregistrer un nouveau projet </h1>
+      <h1 className="instruction"> Enregistrer un nouveau projet </h1>
       <form encType="multipart/form-data" onSubmit={handleSubmit}>
         <label>
           {" "}
@@ -83,26 +88,26 @@ export default function PostProjects({ setProjectPosted }) {
           />
         </label>
         <label>
-          Statut
-          <Switch
+          <input
+            type="checkbox"
             name="status"
-            onClick={handleChangeProjects}
+            checked={isChecked}
             onChange={handleChangeStatus}
-            checked={status === "en cours"}
+            onClick={handleChangeProjects}
             value={status}
           />
-          {status === "terminé" ? "En cours" : "Terminé"}
+          Statut ? {isChecked ? "terminé" : "en cours"}
         </label>
         <label>
-          Publié
-          <Switch
+          <input
+            type="checkbox"
             name="online"
+            checked={isCheckedOnline}
             onClick={handleChangeProjects}
             onChange={handleChangeOnline}
-            checked={online === "hors-ligne"}
             value={online}
           />
-          {online === "en ligne" ? "Hors-ligne" : "En ligne"}
+          Publié ? {isCheckedOnline ? " En ligne" : "Hors-ligne"}
         </label>
         <label>
           {" "}

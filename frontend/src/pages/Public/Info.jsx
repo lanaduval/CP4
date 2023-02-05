@@ -1,6 +1,5 @@
-import Socials from "@components/Socials";
+import Socials from "@components/Public/Socials";
 import bgImg from "../../assets/bgInfo.jpg";
-import "./Anims.scss";
 
 export default function Info() {
   return (
@@ -31,7 +30,6 @@ export default function Info() {
           <br />
         </p>
         <img src={bgImg} alt="decoration" />
-
         <Socials />
       </div>
     </div>

@@ -1,32 +1,10 @@
-import { useState } from "react";
-import PostProjects from "@components/Admin/PostProject";
 import AllProjects from "@components/Admin/AllProjects";
 
 export default function Admin() {
-  const [projectPosted, setProjectPosted] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [postButton, setPostButton] = useState(false);
-
-  const handleModal = () => {
-    setShowModal(!showModal);
-    setPostButton(!postButton);
-  };
   return (
     <div>
-      <button type="button" onClick={handleModal}>
-        {" "}
-        {postButton ? "Go Back" : "Poster un Projet"}{" "}
-      </button>
-      {showModal && (
-        <PostProjects
-          projectPosted={projectPosted}
-          setProjectPosted={setProjectPosted}
-        />
-      )}
-      <AllProjects
-        setProjectPosted={setProjectPosted}
-        projectPosted={projectPosted}
-      />
+      <h1 className="instruction"> Bienvenue, Lana </h1>
+      <AllProjects />
     </div>
   );
 }

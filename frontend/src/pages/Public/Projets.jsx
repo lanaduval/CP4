@@ -1,8 +1,14 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
+import { Switch } from "@mui/material";
 import instance from "../../helpers/axios";
 
 export default function Projets() {
   const [allMyProjects, setAllMyProjects] = useState([]);
+  const [status, setStatus] = useState("terminé");
+  const handleChangeStatus = (e) => {
+    setStatus(e.target.checked ? "en cours" : "terminé");
+  };
 
   useEffect(() => {
     instance
@@ -43,6 +49,14 @@ export default function Projets() {
                 {" "}
                 à rajouter en bdd{" "}
               </a>
+              <Switch
+                name="status"
+                color="warning"
+                onChange={handleChangeStatus}
+                checked={myProjects.status === "terminé"}
+                value={myProjects.status}
+              />
+              {myProjects.status}
             </div>
           ))}
         </div>

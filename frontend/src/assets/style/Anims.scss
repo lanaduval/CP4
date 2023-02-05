@@ -1,3 +1,29 @@
+.navContainer ul,
+#deskNav {
+  :hover {
+    color: rgb(41, 42, 44);
+    opacity: 1;
+    text-shadow: 0 0 7px rgb(236, 230, 250), 0 0 10px rgb(181, 170, 201),
+      0 0 42px rgb(234, 181, 208), 0 0 77px rgb(230, 18, 124),
+      0 0 100px rgb(155, 79, 117);
+
+    animation: lumiere 1s infinite linear;
+    -webkit-animation: lumiere 1s infinite linear;
+  }
+  @keyframes lumiere {
+    0% {
+      text-shadow: 0 0 7px rgb(113, 65, 123), 0 0 10px rgb(112, 60, 149),
+        0 0 42px rgb(156, 116, 217), 0 0 77px rgb(117, 16, 172),
+        0 0 100px rgb(105, 40, 217);
+    }
+    50% {
+      text-shadow: 0 0 7px rgb(91, 86, 241), 0 0 10px rgb(48, 167, 222),
+        0 0 32px rgb(18, 46, 230), 0 0 87px rgb(70, 59, 219),
+        0 0 120px rgb(114, 17, 167);
+    }
+  }
+}
+
 .project {
   animation-name: rightLeft;
   animation-duration: 3s;
@@ -57,6 +83,31 @@
     }
     100% {
       opacity: 1;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .project {
+    animation-name: downUp;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+    @keyframes downUp {
+      0% {
+        transform: translateY(100%);
+        opacity: 1;
+        -webkit-transform: translateY(100%);
+        -moz-transform: translateY(100%);
+        -ms-transform: translateY(100%);
+        -o-transform: translateY(100%);
+      }
+      100% {
+        transform: translateY(0%);
+        -webkit-transform: translateY(0%);
+        -moz-transform: translateY(0%);
+        -ms-transform: translateY(0%);
+        -o-transform: translateY(0%);
+      }
     }
   }
 }
