@@ -466,6 +466,7 @@ textarea {
   }
   #deskNav {
     display: flex;
+    text-transform: uppercase;
   }
   #deskNav li {
     margin: 1rem;
@@ -511,17 +512,28 @@ textarea {
   //-------------PROJETS
   .scroll {
     overflow-x: scroll;
-  }
-  .projectContainer {
+}
+
+.projectContainer {
     display: flex;
     width: max-content;
+    
   }
   .project {
     display: flex;
     flex-direction: row;
+    width: 100%;
+
+  }
+  .project img {
+    display: flex;
+    flex-direction: row;
+    width: 20rem;
+
   }
   .projectCard {
-    width: 8%;
+    width: fit-content;
+
   }
   .projectAdmin {
     display: flex;
