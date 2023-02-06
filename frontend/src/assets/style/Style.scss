@@ -362,6 +362,13 @@ display: flex;
 .putProject {
   background-color: #6a3e8c;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #6a3e8c;
+  height: fit-content;
+  height: 100vh;
+  overflow: scroll;
 }
 .putProject h1 {
   display: flex;
