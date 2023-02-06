@@ -83,7 +83,7 @@ label,
 textarea {
   text-align: start;
   cursor: text;
-  color: rgba(73, 76, 79, 0.697);
+  color: rgba(41, 15, 71, 0.697);
   margin: 0.4em;
   padding: 1px 2px;
   border-width: 2px;
@@ -175,9 +175,6 @@ button.supprimer {
 
 //-----------------------------------------------MOBILE QUERY
 @media only screen and (max-width: 600px) {
-  label {
-    color: #cec8d3;
-  }
   h1 {
     font-family: "Remboy";
     font-size: 2rem;
@@ -281,7 +278,7 @@ button.supprimer {
 // PROJECTS
 .scroll {
   overflow-x: scroll;
-  height:100%;
+  height: 100%;
 }
 .projectContainer {
   display: flex;
@@ -324,7 +321,7 @@ button.supprimer {
 
 //--- ADMIN PROJECTS
 .projectContainerAdmin {
-display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #6a3e8c;
@@ -333,31 +330,28 @@ display: flex;
   overflow: scroll;
 }
 .projectAdmin {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-  }
-  .projectCardAdmin {
-    display: flex;
-    flex-direction: column;
-    margin-left: 2rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    margin-right: 2rem;
-    font-size: 1rem;
-    color: rgba(0, 0, 0, 0.8);
-    padding: 2rem;
-    border-radius: 0.7rem;
-    -webkit-border-radius: 0.7rem;
-    -moz-border-radius: 0.7rem;
-    -ms-border-radius: 0.7rem;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.projectCardAdmin {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-right: 2rem;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.8);
+  padding: 2rem;
+  border-radius: 0.7rem;
+  -webkit-border-radius: 0.7rem;
+  -moz-border-radius: 0.7rem;
+  -ms-border-radius: 0.7rem;
+}
 .projectCardAdmin img {
   width: 90%;
 }
-
-
 
 .putProject {
   background-color: #6a3e8c;
@@ -452,15 +446,12 @@ display: flex;
   margin: 1rem;
 }
 .contactFormLabel {
-    background-color:#2f1a4e30;
-  }
+  background-color: #2f1a4e30;
+}
 
 //------------------- DESKTOP---------------------------------
 
 @media only screen and (min-width: 600px) {
-  label {
-    color: #cec8d3;
-  }
   button.post {
     width: 25%;
   }
@@ -494,8 +485,7 @@ display: flex;
   .welcome {
     top: 20%;
     left: 27%;
-    z-index:0;
-
+    z-index: 0;
   }
   .effetNeon {
     font-size: 3rem;
