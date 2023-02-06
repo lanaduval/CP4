@@ -56,8 +56,8 @@ export default function AllProjects() {
 
   return (
     <div className="projectContainerAdmin">
+      <h1 className="instructionAdmin"> Administration de mes projets :</h1>
       <div className="projectAdmin">
-        <h1 className="instructionAdmin"> Administration de mes projets :</h1>
         <button type="button" className="post" onClick={handleModal}>
           {" "}
           {postButton ? "Go Back" : "Poster un Projet"}{" "}
