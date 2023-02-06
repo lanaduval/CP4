@@ -1,8 +1,8 @@
 
 # Checkpoint 4 - Portfolio
 
-Création d'une base de donnée, d'un back-end  et d'une section admin en front-end pour mon  [portfolio](https://lana-duval.netlify.app/) en ligne.</br>
-La charte graphique  a été reprise de ce premier projet.</br>
+Création d'une base de donnée, d'un back-end  et d'une section admin en front-end pour mon [portfolio](https://lana-duval.netlify.app/) en ligne, le [repo](https://github.com/lanaduval/portfolio-V1) est consultable également.</br>
+La charte graphique  a été reprise de ce premier projet.</br> 
 Vous pouvez retrouver les maquettes réalisées sur #figma à la fin de ce README.
 
 
